@@ -1,31 +1,68 @@
-export default function Slider(props) {
-    return(
-        <div id="gallery" className="relative w-full my-10" data-carousel="static">
-                <div className="relative h-56 overflow-hidden rounded-lg md:h-96">
-                    { props.datas.Imgs.map ((img , i) => {
-                        return(
-                            <div key={i} className="hidden" data-carousel-item>
-                                <img src={ img } className="absolute block max-w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"/>
-                            </div>
-                        )
-                    })}
-                </div>
-                <button type="button" className="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer" data-carousel-prev>
-                    <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30">
-                        <svg className="w-4 h-4 text-white rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 1 1 5l4 4"/>
-                        </svg>
-                        <span className="sr-only">Previous</span>
-                    </span>
-                </button>
-                <button type="button" className="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer" data-carousel-next>
-                    <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30">
-                        <svg className="w-4 h-4 text-white rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 9 4-4-4-4"/>
-                        </svg>
-                        <span className="sr-only">Next</span>
-                    </span>
-                </button>
-            </div>
-    )
+import { Carousel, IconButton } from "@material-tailwind/react";
+
+export default function Slider( props ) {
+    
+  return (  
+                   
+            <Carousel className="rounded-xl flex items-center my-10 border border-gray-700" 
+            
+            
+                prevArrow={({ handlePrev }) => (
+                    
+                    <IconButton
+                    color="gray"
+                    size="lg"
+                    onClick={handlePrev}
+                    className="!absolute top-2/4 left-4 -translate-y-2/4"
+                    >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={2}
+                        stroke="currentColor"
+                        className="h-6 w-6"
+                    >
+                        <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
+                        />
+                    </svg>
+                    </IconButton>
+                )}
+                nextArrow={({ handleNext }) => (
+                    <IconButton
+                      color="white"
+                      size="lg"
+                      onClick={handleNext}
+                      className="!absolute top-2/4 !right-4 -translate-y-2/4"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={2}
+                        stroke="currentColor"
+                        className="h-6 w-6"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                        />
+                      </svg>
+                    </IconButton>
+                  )}
+            > 
+                {props.datas.Imgs.map((img,i)=>{
+                    return(
+                        <img key={i}
+                             src={img}
+                             className="w-full"
+                        />
+                    )
+                })}
+            </Carousel>
+        );
 }
