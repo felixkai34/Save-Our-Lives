@@ -9,6 +9,7 @@ export default function Detail() {
     const param = useParams();
     const datas = Datas.find(data => data.Id == param.Id)
     const hasImg = datas.Imgs.includes(datas.Imgs[0])
+    const hasVd = datas.Videos.includes(datas.Videos[0])
 
     return(
         <> 
@@ -20,7 +21,7 @@ export default function Detail() {
                 <pre className=" text-white leading-loose whitespace-pre-wrap">{datas.Detail}</pre>
                 { param.Id == 3 ? <Appdownload/> : undefined } 
                 { hasImg ? <Slider datas={datas}/> : undefined } 
-                <iframe className=" w-full aspect-video" src={datas.Video} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+                { hasVd ? <iframe className=" w-full aspect-video" src={datas.Videos} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe> : undefined}
                 <Back/>
             </div>
         </>

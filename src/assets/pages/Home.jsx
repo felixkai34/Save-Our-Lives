@@ -12,7 +12,7 @@ export default function Home() {
                     {Datas.map((data)=>{
                         return(
                             <div key={data.Id} className="max-w-sm mx-auto rounded-2xl overflow-hidden shadow-lg border border-cyan-700 text-white">
-                                <img className="w-full h-40" src={ data.Poster }/>
+                                <img className="w-full h-48 object-cover" src={ data.Poster }/>
                                 <div className="px-6 py-4">
                                     <div className="font-bold text-xl mb-5">{data.Name}</div>
                                     <p className="text-base leading-loose">
